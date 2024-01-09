@@ -36,7 +36,7 @@ css = """
 }
 """
 
-openai.api_key = "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"
+openai.api_key = "sk-key"
 
 prompt_template = """
 This is the schema for the my_data table:
