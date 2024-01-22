@@ -35,8 +35,10 @@ jobs:
           ls ${GITHUB_WORKSPACE}
           var=$(cat .github/workflows/ploomber-cloud.yaml)
           echo $var
-          echo "CURRENT_WORKFLOW=$(cat .github/workflows/ploomber-cloud.yaml) >> "$GITHUB_OUTPUT"
-
+          
+          latest=$(curl https://raw.githubusercontent.com/edublancas/cloud-template/main/.github/workflows/ploomber-cloud.yaml)
+          echo $latest
+          
       - name: Print workflow
         env:
           CURRENT_WORKFLOW: ${{ steps.current-workflow.outputs.CURRENT_WORKFLOW }}
