@@ -29,10 +29,13 @@ jobs:
 #          ploomber-cloud deploy --watch
         # The --watch flag will print deployment status updates to the logs.
         # To learn more, visit: https://docs.cloud.ploomber.io/en/latest/user-guide/github.html
-      - name: Current
+      - name: Current workflow file
+        id: current-workflow
         run: |
           ls ${GITHUB_WORKSPACE}
-          cat .github/workflows/ploomber-cloud.yaml
+          cat .github/workflows/ploomber-cloud.yaml >> "$CURRENT_WORKFLOW"
+          echo $CURRENT_WORKFLOW
+          
 
       - name: Read Current Workflow File
         id: read_current
