@@ -39,7 +39,7 @@ jobs:
           latest=$(curl https://raw.githubusercontent.com/edublancas/cloud-template/main/.github/workflows/ploomber-cloud.yaml)
           echo $latest
           
-      - name: Print workflow
-        env:
-          CURRENT_WORKFLOW: ${{ steps.current-workflow.outputs.CURRENT_WORKFLOW }}
-        run: echo "The selected color is $CURRENT_WORKFLOW"
+          if [ "$var" == "$latest" ]; then
+            echo "Workflow files are identical."
+          else
+            echo "Workflow files are different."
