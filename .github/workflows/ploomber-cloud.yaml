@@ -33,7 +33,7 @@ jobs:
         id: current-workflow
         run: |
           ls ${GITHUB_WORKSPACE}
-          var = $(cat .github/workflows/ploomber-cloud.yaml)
+          var=$(cat .github/workflows/ploomber-cloud.yaml)
           echo $var
           echo "CURRENT_WORKFLOW=$(cat .github/workflows/ploomber-cloud.yaml) >> "$GITHUB_OUTPUT"
 
