@@ -1,4 +1,4 @@
-name: Ploomber Cloud another
+name: Ploomber Cloud
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -22,25 +22,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install ploomber-cloud
 
-#      - name: Deploy
-#        env:
-#          PLOOMBER_CLOUD_KEY: ${{ secrets.PLOOMBER_CLOUD_KEY }}
-#        run: |
-#          ploomber-cloud deploy --watch
+      - name: Deploy
+        env:
+          PLOOMBER_CLOUD_KEY: ${{ secrets.PLOOMBER_CLOUD_KEY }}
+        run: |
+          ploomber-cloud deploy --watch
         # The --watch flag will print deployment status updates to the logs.
         # To learn more, visit: https://docs.cloud.ploomber.io/en/latest/user-guide/github.html
-      - name: Current workflow file
-        id: current-workflow
-        run: |
-          ls ${GITHUB_WORKSPACE}
-          var=$(cat .github/workflows/ploomber-cloud.yaml | awk '{$1=$1};1')
-          echo $var
-          
-          latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml | awk '{$1=$1};1')
-          echo $latest
-          
-          if [ "$var" == "$latest" ]; then
-            echo "Workflow files are identical."
-          else
-            echo "Workflow files are different."
-          fi
+
+      - name: Check workflow updates
+          run: |
+            current=$(cat .github/workflows/ploomber-cloud.yaml | awk '{$1=$1};1')            
+            latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml | awk '{$1=$1};1')
+            
+            if [ "$current" == "$latest" ]; then
+              echo "Your GitHub workflow file is up-to-date."
+            else
+              echo "Your GitHub workflow file is outdated. Please run 'ploomber-cloud github' in the CLI to update the file."
+            fi
