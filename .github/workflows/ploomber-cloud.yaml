@@ -32,7 +32,7 @@ jobs:
       - name: Current
         run: |
           ls ${GITHUB_WORKSPACE}
-          ls .git/
+          ls .github/
 
       - name: Read Current Workflow File
         id: read_current
