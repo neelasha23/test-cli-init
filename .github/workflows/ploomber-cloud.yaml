@@ -31,12 +31,12 @@ jobs:
         # To learn more, visit: https://docs.cloud.ploomber.io/en/latest/user-guide/github.html
 
       - name: Check workflow updates
-          run: |
-            current=$(cat .github/workflows/ploomber-cloud.yaml | awk '{$1=$1};1')            
-            latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml | awk '{$1=$1};1')
-            
-            if [ "$current" == "$latest" ]; then
-              echo "Your GitHub workflow file is up-to-date."
-            else
-              echo "Your GitHub workflow file is outdated. Please run 'ploomber-cloud github' in the CLI to update the file."
-            fi
+        run: |
+          current=$(cat .github/workflows/ploomber-cloud.yaml | awk '{$1=$1};1')            
+          latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml | awk '{$1=$1};1')
+          
+          if [ "$current" == "$latest" ]; then
+            echo "Your GitHub workflow file is up-to-date."
+          else
+            echo "Your GitHub workflow file is outdated. Please run 'ploomber-cloud github' in the CLI to update the file."
+          fi
