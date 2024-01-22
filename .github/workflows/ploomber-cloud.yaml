@@ -34,9 +34,4 @@ jobs:
         run: |
           ls ${GITHUB_WORKSPACE}
           CONTENT=$(cat .github/workflows/ploomber-cloud.yaml)
-          echo "current=$CONTENT" >> $CURRENT_WORKFLOW
-          
-
-      - name: Read Current Workflow File
-        id: read_current
-        run: echo "::set-output name=content::$(cat .github/workflows/your_current_workflow.yml)"
+          echo "current=$CONTENT" >> "$CURRENT_WORKFLOW"
