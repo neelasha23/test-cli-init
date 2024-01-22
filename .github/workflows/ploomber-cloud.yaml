@@ -33,7 +33,7 @@ jobs:
         id: current-workflow
         run: |
           ls ${GITHUB_WORKSPACE}
-          echo "CURRENT_WORKFLOW=$cat .github/workflows/ploomber-cloud.ya" >> "$GITHUB_OUTPUT"
+          echo "CURRENT_WORKFLOW=$cat .github/workflows/ploomber-cloud.yaml" >> "$GITHUB_OUTPUT"
 
       - name: Print workflow
         env:
