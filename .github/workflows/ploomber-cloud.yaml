@@ -33,10 +33,10 @@ jobs:
         id: current-workflow
         run: |
           ls ${GITHUB_WORKSPACE}
-          var=$(cat .github/workflows/ploomber-cloud.yaml)
+          var=$(cat .github/workflows/ploomber-cloud.yaml | awk '{$1=$1};1')
           echo $var
           
-          latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml)
+          latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml | awk '{$1=$1};1')
           echo $latest
           
           if [ "$var" == "$latest" ]; then
