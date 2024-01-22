@@ -43,3 +43,4 @@ jobs:
             echo "Workflow files are identical."
           else
             echo "Workflow files are different."
+          fi
