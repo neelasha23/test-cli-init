@@ -34,3 +34,8 @@ jobs:
         run: |
           ls ${GITHUB_WORKSPACE}
           echo "CURRENT_WORKFLOW=$cat .github/workflows/ploomber-cloud.ya" >> "$GITHUB_OUTPUT"
+
+      - name: Print workflow
+        env:
+          CURRENT_WORKFLOW: ${{ steps.current-workflow.outputs.CURRENT_WORKFLOW }}
+        run: echo "The selected color is CURRENT_WORKFLOW"
