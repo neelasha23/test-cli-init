@@ -36,7 +36,7 @@ jobs:
           var=$(cat .github/workflows/ploomber-cloud.yaml)
           echo $var
           
-          latest=$(curl https://raw.githubusercontent.com/edublancas/cloud-template/main/.github/workflows/ploomber-cloud.yaml)
+          latest=$(curl https://raw.githubusercontent.com/neelasha23/test-cli-init/main/assets/ploomber-cloud.yaml)
           echo $latest
           
           if [ "$var" == "$latest" ]; then
