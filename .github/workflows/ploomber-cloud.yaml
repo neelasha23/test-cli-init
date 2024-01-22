@@ -30,7 +30,9 @@ jobs:
         # The --watch flag will print deployment status updates to the logs.
         # To learn more, visit: https://docs.cloud.ploomber.io/en/latest/user-guide/github.html
       - name: Current
-        run: echo ${GITHUB_WORKSPACE}
+        run: |
+          ls ${GITHUB_WORKSPACE}
+
       - name: Read Current Workflow File
         id: read_current
         run: echo "::set-output name=content::$(cat .github/workflows/your_current_workflow.yml)"
